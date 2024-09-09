@@ -1,0 +1,381 @@
+@import url("https://use.typekit.net/xvi5kyy.css");
+
+:root {
+  --header-font: "sinter", sans-serif;
+  --header-font-weight: 500;
+  --text-font: "sinter", sans-serif;
+  --text-font-weight: 300;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@property --primary-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #001544;
+}
+
+@property --secondary-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #01b5fd;
+}
+
+.App {
+  height: 100%;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+p {
+  font-family: var(--text-font);
+  font-weight: var(--text-font-weight);
+  color: white;
+}
+
+canvas {
+  opacity: 0;
+  touch-action: none;
+  animation: fade-in 0.5s ease 0.5s forwards;
+}
+
+.BoxOverlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.500);
+  top: 20px;
+  left: 20px;
+  width: 25vh;
+  padding: 20px 10px;
+  border-radius: 10px;
+  animation: fade-in 0.5s ease 0.5s forwards;
+}
+
+.rightBoxOverlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.500);
+  top: 20px;
+  right: 20px;
+  width: 25vh;
+  border-radius: 10px;
+  animation: fade-in 0.5s ease 0.5s forwards;
+}
+
+.CheckboxWrapper {
+  font-family: var(--header-font);
+  font-weight: var(--text-font-weight);
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+}
+
+.toggleElements {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  line-break: none;
+  width: 100%;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+ 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+ 
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.38);
+}
+ 
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+ 
+.toggle-checkbox:checked + .slider {
+  background-color: #4CAF50;
+}
+ 
+.toggle-checkbox:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.bender-logo {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.442));
+}
+
+.ToolWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdf-download {
+  margin-bottom: 20px;
+}
+
+.pdf-name-input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: var(--text-font);
+  font-weight: var(--text-font-weight);
+}
+
+.pdf-download-button {
+  background-color: var(--primary-color);
+  font-family: var(--text-font);
+  font-weight: var(--text-font-weight);
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.pdf-download-button.active {
+  background-color: #4CAF50;
+  cursor: pointer;
+}
+
+.pdf-download-button.inactive {
+  background-color: #ccc;
+  pointer-events: none;
+  cursor: default;
+}
+
+.recenter-button, .UploadButtons button {
+  text-transform: uppercase;
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: var(--header-font);
+  font-weight: var(--header-font-weight);
+  font-size: 12pt;
+}
+
+.UploadButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.UploadButtons button {
+  font-family: var(--text-font);
+  font-weight: var(--text-font-weight);
+  width: 100%;
+  padding: 15px;
+  font-size: 10pt;
+  white-space: nowrap;
+}
+
+.recenter-button:hover,
+.custom-file-upload:hover, .UploadButtons button:hover {
+  background-color: var(--secondary-color)
+}
+
+.file-upload-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+.custom-file-upload {
+  font-family: var(--header-font);
+  font-weight: var(--header-font-weight);
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.clearButton {
+  margin-top: 10px;
+  font-size: 12pt;
+  font-family: var(--header-font);
+  font-weight: var(--header-font-weight);
+  background-color: #f44336;
+  transition: background-color 0.3s ease;
+}
+
+.clearButton:hover {
+  background-color: darkred;
+}
+
+.HoverText {
+  font-family: var(--text-font);
+  font-weight: var(--text-font-weight);
+  position: absolute;
+  top: 20px;
+  width: 100%; 
+  text-align: center;
+  font-size: 20px;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+ 
+.tooltip-bubble {
+  position: absolute;
+  font-family: var(--text-font);
+  font-weight: var(--text-font-weight);
+  font-size: 10pt;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+ 
+.tooltip-container:hover .tooltip-bubble {
+  opacity: 1;
+}
+ 
+.tooltip-top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 5px;
+}
+ 
+.tooltip-bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+}
+ 
+.tooltip-left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 5px;
+}
+ 
+.tooltip-right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 5px;
+}
+
+.overlay-hint {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  color: white;
+}
+
+.overlay-hint-message strong {
+  font-size: 90px;
+}
+ 
+.overlay-hint-message {
+  line-height: 1rem;
+  font-family: var(--header-font);
+  font-weight: var(--text-font-weight);
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.message-highlight {
+  color: yellow;
+}
+
+.show-tips-button {
+  font-family: var(--text-font);
+  font-weight: var(--text-font-weight);
+  text-transform: uppercase;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.show-tips-button:hover {
+  background-color: rgb(255, 81, 0);
+}
