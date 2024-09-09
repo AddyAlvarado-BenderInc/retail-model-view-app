@@ -59,7 +59,6 @@ canvas {
   background: rgba(0, 0, 0, 0.500);
   top: 20px;
   left: 20px;
-  width: 25vh;
   padding: 20px 10px;
   border-radius: 10px;
   animation: fade-in 0.5s ease 0.5s forwards;
@@ -146,6 +145,7 @@ canvas {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .pdf-download {
@@ -208,6 +208,7 @@ canvas {
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  margin: 0 10px;
 }
 
 .UploadButtons button {
