@@ -131,7 +131,7 @@ function App() {
             </div>
       </div>
       <a href='https://store.bender-inc.com/DSF/SmartStore.aspx?6xni2of2cF3I+NOWcQ94Kbio8hnR9YT58X2lc3p8cFXflW0kLKGpcjXi9EIVbtZK#!/Storefront'>
-      <img className="bender-logo" src="/public/assets/Bender_logo_asset.svg" alt="Bender Logo" />
+      <img className="bender-logo" src="../public/assets/Bender_logo_asset.svg" alt="Bender Logo" />
       </a>
     </div>
   );
