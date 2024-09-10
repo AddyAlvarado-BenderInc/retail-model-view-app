@@ -19,12 +19,12 @@ function App() {
   const triggerUploadBack = useRef(null);
   const [showOverlay, setShowOverlay] = useState(true);
   const [showTrimLines, setShowTrimLines] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 400);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 400);
+      setIsSmallScreen(window.innerWidth < 600);
     };
 
     window.addEventListener('resize', handleResize);
