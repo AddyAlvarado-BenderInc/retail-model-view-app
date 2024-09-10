@@ -427,4 +427,7 @@ input[type=file] {
   .overlay-hint-message strong {
     font-size: 30px;
   }
+  .tooltip-bubble {
+    font-size: 10px;
+  }
 }
