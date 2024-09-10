@@ -8,6 +8,7 @@ import RecenterButton from '../public/components/RecenterButton';
 import ClearArtButton from '../public/components/ClearArtButton';
 import OverlayHint from '../public/components/OverlayHint';
 import Tooltip from '../public/components/ToolTip';
+import HamburgerMenu from '../public/components/HamburgerMenu';
 
 function App() {
   const orbitRef = useRef();
@@ -17,20 +18,25 @@ function App() {
   const triggerUploadFront = useRef(null);
   const triggerUploadBack = useRef(null);
   const [showOverlay, setShowOverlay] = useState(true);
-  const [showTrimLines, setShowTrimLines] = useState(false); // State to control trim lines visibility
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 700);
- 
+  const [showTrimLines, setShowTrimLines] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 400);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 700);
+      setIsSmallScreen(window.innerWidth < 400);
     };
- 
+
     window.addEventListener('resize', handleResize);
- 
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   const meshWidth = 3.5;
   const meshHeight = 2;
@@ -56,7 +62,7 @@ function App() {
   };
 
   const toggleTrimLines = (e) => {
-    setShowTrimLines(e.target.checked); // Set state based on checkbox checked value
+    setShowTrimLines(e.target.checked);
   };
 
   return (
@@ -109,7 +115,12 @@ function App() {
           <ToneMapping />
         </EffectComposer>
       </Canvas>
-      <div className="BoxOverlay">
+
+      {isSmallScreen && (
+        <HamburgerMenu menuOpen={menuOpen} toggleMenu={toggleMenu} />
+      )}
+
+      <div className={`BoxOverlay ${isSmallScreen && menuOpen ? 'open' : ''}`}>
         <div className="ToolWrapper">
           <HandleTextureUpload
             setTextureFront={setTextureFront}
@@ -134,6 +145,7 @@ function App() {
           <button className="show-tips-button" onClick={displayOverlay}>Show Tips</button>
         </div>
       </div>
+
       {hoveredSide && (
         <div className="HoverText"
           style={{
@@ -143,12 +155,13 @@ function App() {
           {`Click to upload file to ${hoveredSide} side`}
         </div>
       )}
-      <div id='rightBoxOverlay' className='rightBoxOverlay'>
+
+      <div className='rightBoxOverlay'>
         <div className="CheckboxWrapper">
           <div className='toggleElements'>
-            <label class="switch">
+            <label className="switch">
               <input className='toggle-checkbox' type="checkbox" onChange={toggleTrimLines} />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <p>Trim Lines</p>
           </div>
