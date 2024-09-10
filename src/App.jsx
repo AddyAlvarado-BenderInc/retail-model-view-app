@@ -119,7 +119,7 @@ function App() {
             {`Click to upload file to ${hoveredSide} side`}
           </div>
         )}
-      <div className='rightBoxOverlay'>
+      <div id='rightBoxOverlay' className='rightBoxOverlay'>
             <div className="CheckboxWrapper">
               <div className='toggleElements'>
               <label class="switch">
@@ -130,7 +130,7 @@ function App() {
               </div>
             </div>
       </div>
-      <img width="300vh" className="bender-logo" src="/public/assets/BenderRetailLogo.png" alt="Bender Logo" />
+      <img width="300vh" className="bender-logo" src="retail-hover-app/public/assets/BenderRetailLogo.png" alt="Bender Logo" />
     </div>
   );
 }
