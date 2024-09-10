@@ -130,7 +130,7 @@ function App() {
               </div>
             </div>
       </div>
-      <img width="300vh" className="bender-logo" src="retail-hover-app/public/assets/BenderRetailLogo.png" alt="Bender Logo" />
+      <img width="300vh" className="bender-logo" src="https://store.bender-inc.com/DSF/IMGS/A6B0F33A-F440-4378-8E9A-BB320EE87610/RESPONSIVEUIDATA/STOREFRONT_2281/BENDERRETAILLOGO.PNG/" alt="Bender Logo" />
     </div>
   );
 }
