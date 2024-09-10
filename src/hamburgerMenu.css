@@ -1,0 +1,41 @@
+.hamburger-menu-icon {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+ 
+.hamburger-line {
+  width: 40px;
+  height: 5px;
+  background-color: black;
+  margin: 3px 0;
+  border-radius: 10px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+ 
+/* For transition between hamburger lines and X icon */
+.hamburger-menu-icon.open .top-line {
+  transform: translateY(8px) rotate(45deg);
+}
+ 
+.hamburger-menu-icon.open .middle-line {
+  opacity: 0;
+}
+ 
+.hamburger-menu-icon.open .bottom-line {
+  transform: translateY(-8px) rotate(-45deg);
+}
+ 
+/* X icon styles */
+.close-icon {
+  font-size: 2.5rem;
+  color: white;
+}
