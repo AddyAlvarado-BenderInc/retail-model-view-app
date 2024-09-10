@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { EffectComposer, ToneMapping } from '@react-three/postprocessing';
 import { Stage, OrbitControls } from '@react-three/drei';
@@ -18,6 +18,19 @@ function App() {
   const triggerUploadBack = useRef(null);
   const [showOverlay, setShowOverlay] = useState(true);
   const [showTrimLines, setShowTrimLines] = useState(false); // State to control trim lines visibility
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 700);
+ 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 700);
+    };
+ 
+    window.addEventListener('resize', handleResize);
+ 
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const meshWidth = 3.5;
   const meshHeight = 2;
@@ -51,13 +64,24 @@ function App() {
       {showOverlay && (
         <OverlayHint
           message={
-            <>
-              <span className="message-highlight">👆 Click & Drag</span> to orbit around the Business Card
-              <br />
-              <strong>⤿</strong><span className="message-highlight"> Click </span> on the Business Card sides to{' '}
-              <span className="message-highlight">Upload Images 📷</span> <strong>⤾</strong>
-              <br />
-            </>
+            isSmallScreen ? (
+              <>
+                <span className="message-highlight">👆 Hold & Drag</span> to orbit the Business Card
+                <br />
+                <span className="message-highlight"> ✌️ Use Two Fingers </span> to pan around the Business Card 
+                <br />
+                <span className="message-highlight"> 🤏 Pinch-In </span> to zoom out
+                <br />
+                <span className="message-highlight"> 👌 Pinch-Out </span> to zoom in
+              </>
+            ) : (
+              <>
+                <span className="message-highlight">👆 Click & Drag</span> to orbit around the Business Card
+                <br />
+                <strong>⤿</strong><span className="message-highlight"> Click </span> on the Business Card sides to{' '}
+                <span className="message-highlight">Upload Images 📷</span> <strong>⤾</strong>
+              </>
+            )
           }
           onDismiss={dismissOverlay}
         />
@@ -110,25 +134,25 @@ function App() {
           <button className="show-tips-button" onClick={displayOverlay}>Show Tips</button>
         </div>
       </div>
-        {hoveredSide && (
-          <div className="HoverText"
-            style={{
-              color: getColorForSide(hoveredSide),
-            }}
-          >
-            {`Click to upload file to ${hoveredSide} side`}
-          </div>
-        )}
+      {hoveredSide && (
+        <div className="HoverText"
+          style={{
+            color: getColorForSide(hoveredSide),
+          }}
+        >
+          {`Click to upload file to ${hoveredSide} side`}
+        </div>
+      )}
       <div id='rightBoxOverlay' className='rightBoxOverlay'>
-            <div className="CheckboxWrapper">
-              <div className='toggleElements'>
-              <label class="switch">
-                <input className='toggle-checkbox' type="checkbox" onChange={toggleTrimLines} />
-                <span class="slider round"></span>
-              </label>
-                <p>Trim Lines</p>
-              </div>
-            </div>
+        <div className="CheckboxWrapper">
+          <div className='toggleElements'>
+            <label class="switch">
+              <input className='toggle-checkbox' type="checkbox" onChange={toggleTrimLines} />
+              <span class="slider round"></span>
+            </label>
+            <p>Trim Lines</p>
+          </div>
+        </div>
       </div>
       <img width="300vh" className="bender-logo" src="https://store.bender-inc.com/DSF/IMGS/A6B0F33A-F440-4378-8E9A-BB320EE87610/RESPONSIVEUIDATA/STOREFRONT_2281/BENDERRETAILLOGO.PNG/" alt="Bender Logo" />
     </div>
