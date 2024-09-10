@@ -106,7 +106,7 @@ function App() {
             textureBack={textureBack}
             triggerUploadFront={triggerUploadFront}
             triggerUploadBack={triggerUploadBack}
-            setHoveredSide={setHoveredSide}
+            setHoveredSide={isSmallScreen ? null : setHoveredSide}
             showTrimLines={showTrimLines}
           />
         </Stage>
