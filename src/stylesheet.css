@@ -386,12 +386,45 @@ input[type=file] {
     font-size: 8pt;
   }
   .rightBoxOverlay {
-    width: 25%;
+    width: 50%;
   }
   .CheckboxWrapper {
     font-size: 10pt;
   }
   .bender-logo {
-    width: 25vh;
+    width: 10vh;
+  }
+  .overlay-hint-message {
+    font-size: 14px;
+  }
+  .overlay-hint-message strong {
+    font-size: 30px;
+  }
+  .HoverText {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .recenter-button, .UploadButtons button, .clearButton, .show-tips-button {
+    padding: 8px;
+    font-size: 8pt;
+  }
+  .rightBoxOverlay {
+    width: 50%;
+    top: unset;
+    bottom: 20px;
+  }
+  .CheckboxWrapper {
+    font-size: 10pt;
+  }
+  .bender-logo {
+    width: 150px;
+  }
+  .overlay-hint-message {
+    font-size: 12px;
+  }
+  .overlay-hint-message strong {
+    font-size: 30px;
   }
 }
